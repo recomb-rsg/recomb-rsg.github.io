@@ -12,6 +12,7 @@
             --text-secondary: #555555; /* Medium grey */
             --accent: #000000;         /* Stark black for emphasis */
             --border: #e0e0e0;
+            --bg-subtle: #fafafa;      /* Very light grey for alternate rows/blocks */
             --container-width: 840px;  /* Narrower for reading comfort */
         }
 
@@ -152,7 +153,7 @@
         }
         .button:hover { background: #333; }
 
-        /* --- Minimal Table --- */
+        /* --- Minimal Table (Timeline & Schedule) --- */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -161,9 +162,51 @@
         td {
             padding: 20px 0;
             border-bottom: 1px solid var(--border);
+            vertical-align: top;
         }
-        td:first-child { color: var(--text-main); width: 40%; font-weight: 500; }
-        td:last-child { color: var(--text-secondary); text-align: right; }
+        /* First column styling (Time/Date) */
+        td:first-child { 
+            color: var(--text-main); 
+            width: 30%; 
+            font-weight: 500; 
+            font-variant-numeric: tabular-nums; /* Aligns numbers nicely */
+        }
+        /* Second column styling (Event) */
+        td:last-child { 
+            color: var(--text-secondary); 
+            text-align: left; 
+        }
+
+        /* Schedule Specific Styling */
+        .schedule-break {
+            background-color: var(--bg-subtle);
+            color: var(--text-secondary);
+            font-style: italic;
+            padding-left: 10px; /* Indent slightly to differentiate */
+        }
+        .session-title {
+            display: block;
+            color: var(--text-main);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .session-desc {
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* --- Organization Grid --- */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .person-item { margin-bottom: 20px; }
+        .person-name { display: block; font-weight: 700; color: var(--text-main); }
+        .person-affil { display: block; font-size: 0.9rem; color: var(--text-secondary); }
+        .role-group h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .person-list { list-style: none; padding: 0; margin: 0; }
 
         /* --- Footer --- */
         footer {
@@ -181,6 +224,8 @@
             nav { flex-direction: column; gap: 20px; }
             .nav-items a { margin: 0 15px; }
             .wrapper { padding: 0 25px; }
+            table td { display: block; width: 100%; padding: 10px 0; border: none; }
+            table tr { border-bottom: 1px solid var(--border); display: block; padding: 15px 0; }
         }
     </style>
 </head>
@@ -193,7 +238,8 @@
             <div class="nav-items">
                 <a href="#about">About</a>
                 <a href="#call">Submissions</a>
-                <a href="#dates">Schedule</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#organization">Organization</a>
             </div>
         </nav>
 
@@ -234,8 +280,10 @@
                 <div class="track-item">
                     <h3>Proceedings Track</h3>
                     <p>For original, unpublished research offering significant contributions to the field.</p>
+                    <ul>
                         <li>2 page abstract</li>
                         <li>Presentation of pre-print manuscripts</li>
+                    </ul>
                 </div>
                 
                 <div class="track-item">
@@ -264,37 +312,161 @@
             <h2>Timeline</h2>
             <table>
                 <tr>
-                    <td>Paper Submission</td>
                     <td>January 30, 2026</td>
+                    <td>Paper Submission Deadline</td>
                 </tr>
                 <tr>
-                    <td>Highlights Submission</td>
                     <td>February 15, 2026</td>
+                    <td>Highlights Submission Deadline</td>
                 </tr>
                 <tr>
-                    <td>Author Notification</td>
                     <td>March 15, 2026</td>
+                    <td>Author Notification</td>
                 </tr>
                 <tr>
-                    <td>Conference Dates</td>
                     <td>May 24–25, 2026</td>
+                    <td>Conference Dates</td>
                 </tr>
             </table>
         </section>
 
-        <section>
+        <section id="schedule">
+            <h2>Tentative Schedule</h2>
+            <p>A detailed program will be announced after author notifications. The general structure follows standard RECOMB satellite timing.</p>
+            
+            <h3 style="margin-top: 40px; font-size: 1.2rem; border-bottom: none;">Day 1 — May 24</h3>
+            <table>
+                <tr>
+                    <td>08:30 – 09:00</td>
+                    <td><span class="session-title">Registration & Welcome</span></td>
+                </tr>
+                <tr>
+                    <td>09:00 – 10:30</td>
+                    <td>
+                        <span class="session-title">Session I</span>
+                        <span class="session-desc">Keynote & Selected Talks</span>
+                    </td>
+                </tr>
+                <tr class="schedule-break">
+                    <td>10:30 – 11:00</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>11:00 – 12:30</td>
+                    <td>
+                        <span class="session-title">Session II</span>
+                        <span class="session-desc">Selected Proceedings Talks</span>
+                    </td>
+                </tr>
+                <tr class="schedule-break">
+                    <td>12:30 – 14:00</td>
+                    <td>Lunch Break</td>
+                </tr>
+                <tr>
+                    <td>14:00 – 15:30</td>
+                    <td>
+                        <span class="session-title">Session III</span>
+                        <span class="session-desc">Selected Highlights Talks</span>
+                    </td>
+                </tr>
+                <tr class="schedule-break">
+                    <td>15:30 – 16:00</td>
+                    <td>Afternoon Coffee</td>
+                </tr>
+                <tr>
+                    <td>16:00 – 18:00</td>
+                    <td>
+                        <span class="session-title">Poster Session</span>
+                        <span class="session-desc">Networking & Poster Presentations</span>
+                    </td>
+                </tr>
+            </table>
+
+            <h3 style="margin-top: 60px; font-size: 1.2rem; border-bottom: none;">Day 2 — May 25</h3>
+            <table>
+                <tr>
+                    <td>09:00 – 10:30</td>
+                    <td>
+                        <span class="session-title">Session IV</span>
+                        <span class="session-desc">Keynote & Selected Talks</span>
+                    </td>
+                </tr>
+                <tr class="schedule-break">
+                    <td>10:30 – 11:00</td>
+                    <td>Coffee Break</td>
+                </tr>
+                <tr>
+                    <td>11:00 – 12:30</td>
+                    <td>
+                        <span class="session-title">Session V</span>
+                        <span class="session-desc">Selected Proceedings Talks</span>
+                    </td>
+                </tr>
+                <tr class="schedule-break">
+                    <td>12:30 – 13:00</td>
+                    <td>Closing Remarks & Awards</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="organization">
             <h2>Organization</h2>
-            <p><strong>Program Chairs</strong></p>
-            <p style="margin-top: -15px;">
-                TBD, University Name<br>
-                TBD, Institute Name
-            </p>
+            
+            <div class="leadership-grid">
+                
+                <div class="role-group">
+                    <h3>Co-Chairs</h3>
+                    <ul class="person-list">
+                        <li class="person-item">
+                            <span class="person-name">Ferhat Ay</span>
+                            <span class="person-affil">La Jolla Institute for Immunology<br>UCSD</span>
+                        </li>
+                        <li class="person-item">
+                            <span class="person-name">Aly Azeem Khan</span>
+                            <span class="person-affil">University of Chicago<br>Biohub Chicago</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="role-group">
+                    <h3>Steering Committee</h3>
+                    <ul class="person-list">
+                        <li class="person-item">
+                            <span class="person-name">Jason Ernst</span>
+                            <span class="person-affil">University of California, Los Angeles</span>
+                        </li>
+                        <li class="person-item">
+                            <span class="person-name">Sushmita Roy</span>
+                            <span class="person-affil">University of Wisconsin-Madison</span>
+                        </li>
+                        <li class="person-item">
+                            <span class="person-name">Saurabh Sinha</span>
+                            <span class="person-affil">Georgia Institute of Technology</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="role-group">
+                    <h3>Program Chairs</h3>
+                    <ul class="person-list">
+                        <li class="person-item">
+                            <span class="person-name">TBD</span>
+                            <span class="person-affil">University Name</span>
+                        </li>
+                        <li class="person-item">
+                            <span class="person-name">TBD</span>
+                            <span class="person-affil">Institute Name</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </section>
 
     </div>
 
     <footer>
-        &copy; 2026 RECOMB-RSG Organization. All rights reserved.
+        &copy; 2026 RECOMB-RSG. All rights reserved.
     </footer>
 
 </body>
