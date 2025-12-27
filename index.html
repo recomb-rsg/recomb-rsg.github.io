@@ -3,470 +3,602 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECOMB-RSG 2026 | RECOMB Regulatory Genomics Satellite</title>
+    <title>RECOMB-RSG 2026 | Regulatory Genomics Satellite</title>
     <style>
-        /* --- Timeless Minimalist Variables --- */
+        /* --- COMPACT VISIONARY SYSTEM --- */
         :root {
-            --bg-color: #ffffff;
-            --text-main: #111111;      /* Almost black */
-            --text-secondary: #555555; /* Medium grey */
-            --accent: #000000;         /* Stark black for emphasis */
-            --border: #e0e0e0;
-            --bg-subtle: #fafafa;      /* Very light grey for alternate rows/blocks */
-            --container-width: 840px;  /* Narrower for reading comfort */
+            /* Palette: Soft & Contained */
+            --bg-body: #f3f4f6;       /* Light grey background reduces starkness */
+            --bg-card: #ffffff;       /* White cards for content */
+            --text-main: #111827;     /* Soft charcoal */
+            --text-muted: #4b5563;    /* Muted grey */
+            --border-light: #e5e7eb;
+            
+            /* Accent: Electric Blue */
+            --accent: #0044cc; 
+
+            /* Typography */
+            --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --max-width: 960px;       
+            --radius: 12px;           
         }
 
-        /* --- Global Typography --- */
+        /* --- GLOBAL RESET --- */
+        * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        
+
         body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Modern Clean Body */
-            background-color: var(--bg-color);
+            font-family: var(--font-stack);
+            background-color: var(--bg-body);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Timeless Serif for Headings */
-        h1, h2, h3 {
-            font-family: Georgia, "Times New Roman", Times, serif;
-            font-weight: normal;
+        h1, h2, h3, h4 {
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: -0.02em; 
             color: var(--text-main);
-            margin-top: 0;
         }
 
-        /* --- Layout --- */
-        .wrapper {
-            max-width: var(--container-width);
+        h2 { font-size: 1.5rem; margin-bottom: 24px; }
+        h3 { font-size: 1.15rem; margin-bottom: 12px; color: var(--accent); }
+        h4 { font-size: 0.95rem; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+        p, ul, li { color: var(--text-muted); margin-bottom: 1rem; font-size: 1rem; }
+        
+        /* Updated Bullet Styling */
+        ul.styled-list { 
+            padding-left: 20px; 
+            margin-top: 10px;
+        }
+        ul.styled-list li { 
+            margin-bottom: 0.5rem; 
+            padding-left: 5px;
+        }
+        
+        /* Two-column layout for topics */
+        .topics-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        a { 
+            color: inherit; 
+            text-decoration: none; 
+            transition: color 0.2s ease; 
+        }
+
+        .link-highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        .link-highlight:hover { text-decoration: underline; }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 24px;
         }
 
-        /* --- Navigation --- */
+        .section-spacer { padding-bottom: 60px; }
+
+        /* CARD STYLE */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border-light);
+            margin-bottom: 0;
+        }
+
+        /* --- NAVIGATION --- */
         nav {
-            padding: 50px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 15px 0;
+        }
+
+        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--text-main); /* Strong line */
-            margin-bottom: 80px;
         }
 
-        .nav-logo {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
+        .logo {
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: -0.02em;
             text-transform: uppercase;
         }
 
-        .nav-items a {
-            margin-left: 30px;
-            text-decoration: none;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            transition: color 0.2s;
+        .nav-links { display: flex; gap: 24px; }
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
         }
-        .nav-items a:hover { color: var(--text-main); }
+        .nav-links a:hover { color: var(--accent); }
 
-        /* --- Hero Section --- */
-        .hero {
-            margin-bottom: 120px;
-        }
+        /* --- HERO SECTION --- */
+        .hero { padding: 80px 0 60px; }
 
         h1 {
-            font-size: 4.2rem; /* Large, editorial scale */
+            font-size: 3.5rem;
             line-height: 1.1;
             margin-bottom: 30px;
-            letter-spacing: -1px;
+            max-width: 800px;
+        }
+
+        .hero-meta-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
         }
 
         .hero-meta {
-            font-family: "Helvetica Neue", Helvetica, sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-secondary);
+            border-left: 5px solid var(--accent);
+            padding-left: 20px;
             display: flex;
-            gap: 40px;
-            border-top: 1px solid var(--border);
-            padding-top: 20px;
-        }
-
-        .hero-meta div strong {
-            display: block;
-            color: var(--text-main);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
-        }
-
-        /* --- Content Sections --- */
-        section { margin-bottom: 120px; }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 20px;
-        }
-
-        p {
+            flex-direction: column;
+            gap: 2px;
             font-size: 1.05rem;
-            color: var(--text-secondary);
+            color: var(--text-muted);
+        }
+
+        .hero-meta strong { color: var(--text-main); font-weight: 600; }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--text-main);
+            color: white;
+            padding: 12px 28px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            transition: transform 0.2s ease, background-color 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            background-color: var(--accent);
+        }
+
+        /* --- VISION / BLURB --- */
+        .vision-lead {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            font-weight: 500;
             margin-bottom: 20px;
-            max-width: 650px; /* Optimal reading width */
+            color: var(--text-main);
         }
 
-        /* --- Tracks Grid --- */
-        .tracks {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 50px;
-            margin-top: 40px;
-        }
-
-        .track-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-style: italic; /* Classy touch */
+        /* --- TIMELINE --- */
+        .timeline-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
         }
         
-        .track-item ul {
-            padding-left: 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+        .timeline-box {
+            flex: 1;
+            min-width: 180px;
+            border-left: 2px solid var(--border-light);
+            padding-left: 15px;
         }
-
-        /* --- Button --- */
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 35px;
-            background: var(--text-main);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-radius: 0; /* Sharp corners for modern feel */
-            transition: background 0.3s;
-        }
-        .button:hover { background: #333; }
-
-        /* --- Minimal Table (Timeline & Schedule) --- */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 1rem;
-        }
-        td {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            vertical-align: top;
-        }
-        /* First column styling (Time/Date) */
-        td:first-child { 
-            color: var(--text-main); 
-            width: 30%; 
-            font-weight: 500; 
-            font-variant-numeric: tabular-nums; /* Aligns numbers nicely */
-        }
-        /* Second column styling (Event) */
-        td:last-child { 
-            color: var(--text-secondary); 
-            text-align: left; 
-        }
-
-        /* Schedule Specific Styling */
-        .schedule-break {
-            background-color: var(--bg-subtle);
-            color: var(--text-secondary);
-            font-style: italic;
-            padding-left: 10px; /* Indent slightly to differentiate */
-        }
-        .session-title {
+        
+        .t-date {
             display: block;
-            color: var(--text-main);
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 4px;
         }
-        .session-desc {
-            font-size: 0.9rem;
-            display: block;
+        
+        .t-event {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: 500;
         }
 
-        /* --- Organization Grid --- */
-        .leadership-grid {
+        /* --- SUBMISSION DETAILS --- */
+        .track-block {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .track-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .fine-print {
+            font-size: 0.9rem;
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+            margin-top: 20px;
+        }
+
+        /* --- SCHEDULE --- */
+        .day-block { margin-bottom: 40px; }
+        .day-block:last-child { margin-bottom: 0; }
+        
+        .day-header {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            color: var(--text-main);
+            background: #f9fafb;
+            padding: 10px 15px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .session {
+            display: flex;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+            transition: background-color 0.2s;
+        }
+        .session:last-child { border-bottom: none; }
+        .session:hover { background-color: #fafafa; }
+
+        .s-time {
+            width: 130px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .s-info { flex-grow: 1; }
+        .s-title { display: block; font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+        .s-desc { display: block; font-size: 0.9rem; color: var(--text-muted); }
+        .break { background-color: #fafafa; margin: 0 -40px; padding: 8px 40px; }
+        .break .s-time { color: #999; }
+
+        /* --- ORGANIZATION --- */
+        .org-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 40px;
+        }
+
+        .role-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: block;
+            font-weight: 600;
+        }
+
+        .person { margin-bottom: 15px; }
+        .person-name { font-size: 1.05rem; font-weight: 700; display: block; color: var(--text-main); }
+        .person-link:hover .person-name { color: var(--accent); }
+        .person-affil { display: block; font-size: 0.9rem; color: var(--text-muted); line-height: 1.3; }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-light);
             margin-top: 40px;
         }
-        .person-item { margin-bottom: 20px; }
-        .person-name { display: block; font-weight: 700; color: var(--text-main); }
-        .person-affil { display: block; font-size: 0.9rem; color: var(--text-secondary); }
-        .role-group h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .person-list { list-style: none; padding: 0; margin: 0; }
 
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 80px 0;
-            font-size: 0.8rem;
-            color: #999;
-            border-top: 1px solid var(--border);
-        }
-
-        /* Mobile */
-        @media (max-width: 700px) {
-            h1 { font-size: 2.8rem; }
-            .hero-meta { flex-direction: column; gap: 20px; }
-            nav { flex-direction: column; gap: 20px; }
-            .nav-items a { margin: 0 15px; }
-            .wrapper { padding: 0 25px; }
-            table td { display: block; width: 100%; padding: 10px 0; border: none; }
-            table tr { border-bottom: 1px solid var(--border); display: block; padding: 15px 0; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero { padding: 40px 0; }
+            .nav-links { display: none; }
+            .card { padding: 25px; }
+            .session { flex-direction: column; gap: 4px; }
+            .break { margin: 0 -25px; padding: 8px 25px; }
+            .timeline-box { width: 100%; border-left: none; border-top: 2px solid var(--border-light); padding-left: 0; padding-top: 10px; }
+            .topics-columns { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        
-        <nav>
-            <div class="nav-logo">RECOMB-RSG 2026</div>
-            <div class="nav-items">
+    <nav>
+        <div class="container nav-inner">
+            <div class="logo">RECOMB-RSG 2026</div>
+            <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#call">Submissions</a>
+                <a href="#dates">Timeline</a>
+                <a href="#submissions">Submissions</a>
                 <a href="#schedule">Schedule</a>
-                <a href="#organization">Organization</a>
+                <a href="#venue">Venue</a>
+                <a href="#team">Committees</a>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <header class="hero">
+    <div class="container">
+        
+        <section class="hero">
             <h1>Regulatory &<br>Systems Genomics</h1>
             
-            <div class="hero-meta">
-                <div>
-                    <strong>Location</strong>
-                    Thessaloniki, Greece
-                </div>
-                <div>
-                    <strong>Date</strong>
-                    May 24–25, 2026
-                </div>
-                <div>
-                    <strong>Context</strong>
-                    Satellite Meeting of RECOMB 2026
+            <div class="hero-meta-wrapper">
+                <div class="hero-meta">
+                    <span><strong>Thessaloniki, Greece</strong></span>
+                    <span>May 25, 2026</span>
+                    <span>RECOMB Satellite Meeting</span>
                 </div>
             </div>
-        </header>
 
-        <section id="about">
-            <h2>The Meeting</h2>
-            <p>
-                RECOMB-RSG 2026 is a key forum for advances in regulatory genomics and systems biology.
-            </p>
-            <p>
-                As a satellite meeting of RECOMB, we bring together a focused community of researchers to explore the algorithms, mathematical models, and machine learning techniques decoding the regulatory logic of the genome.
-            </p>
+            <a href="https://easychair.org/conferences/?conf=recombrsg2026" class="btn-primary">Submit via EasyChair</a>
         </section>
 
-        <section id="call">
-            <h2>Call for Contributions</h2>
-            <p>We invite submissions for oral presentations and posters in the following tracks.</p>
+        <section id="about" class="section-spacer">
+            <div class="card">
+                <p class="vision-lead">
+                    Welcome to the RECOMB-RSG 2026. This satellite meeting brings together researchers to discuss emerging frontiers in the algorithmic, mathematical, and statistical study of gene regulation and systems biology.
+                </p>
+                <div class="vision-details">
+                    <p>
+                        The program will feature invited talks, contributed presentations, and dedicated sessions designed to foster substantive discussion. A key focus is on scientific discussion: <strong>we strongly encourage participants to submit and present preprints or recently published work</strong>. This approach allows new results to be discussed in detail, critiqued constructively, and built upon collaboratively.
+                    </p>
+                    <p>
+                        Contributions on any theoretical and/or empirical approach to regulatory systems are welcome. Topics of interest include, but are not limited to:
+                    </p>
+                    
+                    <div class="topics-columns">
+                        <ul class="styled-list">
+                            <li>Gene Regulatory Networks</li>
+                            <li>Single-cell Multi-omics</li>
+                            <li>Spatial Transcriptomics</li>
+                            <li>Chromatin & Epigenomics</li>
+                            <li>Deep Learning in Genomics</li>
+                        </ul>
+                        <ul class="styled-list">
+                            <li>Virtual Cell Models</li>
+                            <li>Evolutionary Systems Biology</li>
+                            <li>Perturbation Biology</li>
+                            <li>Machine Learning in Genomics</li>
+                            <li>Multi-modal Integration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="tracks">
-                <div class="track-item">
-                    <h3>Proceedings Track</h3>
-                    <p>For original, unpublished research offering significant contributions to the field.</p>
-                    <ul>
-                        <li>2 page abstract</li>
-                        <li>Presentation of pre-print manuscripts</li>
+        <section id="dates" class="section-spacer">
+            <div class="card">
+                <h2>Timeline</h2>
+                <div class="timeline-row">
+                    <div class="timeline-box">
+                        <span class="t-date">Feb 15, 2026</span>
+                        <span class="t-event">Submission Deadline</span>
+                    </div>
+                    <div class="timeline-box">
+                        <span class="t-date">Mar 15, 2026</span>
+                        <span class="t-event">Author Notification</span>
+                    </div>
+                    <div class="timeline-box">
+                        <span class="t-date">May 25, 2026</span>
+                        <span class="t-event">Conference</span>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">* All deadlines are 23:59 AoE (Anywhere on Earth).</p>
+            </div>
+        </section>
+
+        <section id="submissions" class="section-spacer">
+            <div class="card">
+                <h2>Call for Talks</h2>
+                <p>RECOMB-RSG 2026 welcomes contributions in all areas of regulatory and systems genomics. Contributions can follow several distinct formats, from full papers to short abstracts.</p>
+                
+                <div class="track-block">
+                    <h3>Preprints Track</h3>
+                    <p>For original, previously unpublished research currently on a preprint server (arXiv, bioRxiv, medRxiv).</p>
+                    <ul class="styled-list">
+                        <li><strong>Submission:</strong> 2 page abstract describing the problem, results, and significance.</li>
+                        <li><strong>Deadline:</strong> February 15, 2026.</li>
+                        <li><strong>Requirement:</strong> Full paper must be submitted to a preprint server by February 15, 2026 to ensure accessibility.</li>
+                        <li><strong>Format:</strong> Selected abstracts will be invited for oral presentations.</li>
                     </ul>
                 </div>
-                
-                <div class="track-item">
+
+                <div class="track-block">
                     <h3>Highlights Track</h3>
-                    <p>For high-impact work already published in top-tier journals (Jan 2025 – Present).</p>
-                    <ul>
-                        <li>2 page abstract</li>
-                        <li>Presentation of recent breakthrough findings</li>
+                    <p>For high-impact computational work published in a journal after <strong>January 1, 2025</strong>.</p>
+                    <ul class="styled-list">
+                        <li><strong>Submission:</strong> 1-2 page abstract.</li>
+                        <li><strong>Deadline:</strong> February 15, 2026.</li>
+                        <li><strong>Format:</strong> Selected abstracts will be invited for oral presentations.</li>
                     </ul>
                 </div>
 
-                <div class="track-item">
-                    <h3>Poster Track</h3>
-                    <p>For late-breaking results, ongoing research, and preliminary findings.</p>
-                    <ul>
-                        <li>1 page abstract</li>
-                        <li>Dedicated poster session</li>
+                <div class="track-block">
+                    <h3>Lightning Talks (Late-Breaking)</h3>
+                    <p>For unpublished work, late-breaking results, or recently published findings.</p>
+                    <ul class="styled-list">
+                        <li><strong>Submission:</strong> 2 page abstract.</li>
+                        <li><strong>Deadline:</strong> February 15, 2026.</li>
+                        <li><strong>Format:</strong> Selected abstracts will be invited for short lightning talks.</li>
                     </ul>
+                </div>
+
+                <div class="fine-print">
+                    <h4>Submission Procedure</h4>
+                    <p>
+                        Submission of papers to RECOMB-RSG 2026 will be through the <a href="https://easychair.org/conferences/?conf=recombrsg2026" class="link-highlight">EasyChair conference system</a>.
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        <strong>RECOMB Rejecti:</strong> Papers rejected by the main RECOMB 2026 conference can be submitted to RSG. These submissions will be reviewed for consideration as <strong>Lightning Talks</strong>. Please include previous reviews and a response letter with your submission.
+                    </p>
                 </div>
             </div>
-
-            <a href="#" class="button">Submit Abstract</a>
         </section>
 
-        <section id="dates">
-            <h2>Timeline</h2>
-            <table>
-                <tr>
-                    <td>January 30, 2026</td>
-                    <td>Paper Submission Deadline</td>
-                </tr>
-                <tr>
-                    <td>February 15, 2026</td>
-                    <td>Highlights Submission Deadline</td>
-                </tr>
-                <tr>
-                    <td>March 15, 2026</td>
-                    <td>Author Notification</td>
-                </tr>
-                <tr>
-                    <td>May 24–25, 2026</td>
-                    <td>Conference Dates</td>
-                </tr>
-            </table>
+        <section id="schedule" class="section-spacer">
+            <div class="card">
+                <div style="margin-bottom: 30px;">
+                    <h2>Tentative Schedule</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Detailed program will be announced after notifications.</p>
+                </div>
+
+                <div class="day-block">
+                    <div class="day-header">Monday, May 25</div>
+                    <div class="session">
+                        <div class="s-time">08:30 – 09:00</div>
+                        <div class="s-info"><span class="s-title">Registration & Welcome</span></div>
+                    </div>
+                    <div class="session">
+                        <div class="s-time">09:00 – 10:30</div>
+                        <div class="s-info">
+                            <span class="s-title">Session I</span>
+                            <span class="s-desc">Keynote & Selected Talks</span>
+                        </div>
+                    </div>
+                    <div class="session break">
+                        <div class="s-time">10:30 – 11:00</div>
+                        <div class="s-info"><span class="s-title">Coffee Break</span></div>
+                    </div>
+                    <div class="session">
+                        <div class="s-time">11:00 – 12:30</div>
+                        <div class="s-info">
+                            <span class="s-title">Session II</span>
+                            <span class="s-desc">Selected Proceedings Talks</span>
+                        </div>
+                    </div>
+                    <div class="session break">
+                        <div class="s-time">12:30 – 13:30</div>
+                        <div class="s-info"><span class="s-title">Lunch Break</span></div>
+                    </div>
+                    <div class="session">
+                        <div class="s-time">13:30 – 15:00</div>
+                        <div class="s-info">
+                            <span class="s-title">Session III</span>
+                            <span class="s-desc">Selected Highlights Talks</span>
+                        </div>
+                    </div>
+                    <div class="session break">
+                        <div class="s-time">15:00 – 15:30</div>
+                        <div class="s-info"><span class="s-title">Afternoon Coffee</span></div>
+                    </div>
+                    <div class="session">
+                        <div class="s-time">15:30 – 17:00</div>
+                        <div class="s-info">
+                            <span class="s-title">Session IV</span>
+                            <span class="s-desc">Lightning Talks & Late Breaking</span>
+                        </div>
+                    </div>
+                    <div class="session">
+                        <div class="s-time">17:00 – 17:30</div>
+                        <div class="s-info"><span class="s-title">Closing Remarks</span></div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="schedule">
-            <h2>Tentative Schedule</h2>
-            <p>A detailed program will be announced after author notifications. The general structure follows standard RECOMB satellite timing.</p>
-            
-            <h3 style="margin-top: 40px; font-size: 1.2rem; border-bottom: none;">Day 1 — May 24</h3>
-            <table>
-                <tr>
-                    <td>08:30 – 09:00</td>
-                    <td><span class="session-title">Registration & Welcome</span></td>
-                </tr>
-                <tr>
-                    <td>09:00 – 10:30</td>
-                    <td>
-                        <span class="session-title">Session I</span>
-                        <span class="session-desc">Keynote & Selected Talks</span>
-                    </td>
-                </tr>
-                <tr class="schedule-break">
-                    <td>10:30 – 11:00</td>
-                    <td>Coffee Break</td>
-                </tr>
-                <tr>
-                    <td>11:00 – 12:30</td>
-                    <td>
-                        <span class="session-title">Session II</span>
-                        <span class="session-desc">Selected Proceedings Talks</span>
-                    </td>
-                </tr>
-                <tr class="schedule-break">
-                    <td>12:30 – 14:00</td>
-                    <td>Lunch Break</td>
-                </tr>
-                <tr>
-                    <td>14:00 – 15:30</td>
-                    <td>
-                        <span class="session-title">Session III</span>
-                        <span class="session-desc">Selected Highlights Talks</span>
-                    </td>
-                </tr>
-                <tr class="schedule-break">
-                    <td>15:30 – 16:00</td>
-                    <td>Afternoon Coffee</td>
-                </tr>
-                <tr>
-                    <td>16:00 – 18:00</td>
-                    <td>
-                        <span class="session-title">Poster Session</span>
-                        <span class="session-desc">Networking & Poster Presentations</span>
-                    </td>
-                </tr>
-            </table>
+        <section id="venue" class="section-spacer">
+            <div class="card">
+                <h2>Venue</h2>
+                <p>RECOMB 2026 will be held in the <strong>Thessaloniki Concert Hall</strong>.</p>
+                <div style="background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid var(--border-light); display: inline-block;">
+                    <div style="width:100%; height:150px; background-color: #eee; border-radius: 6px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 0.85rem;">
+                      
+                    <iframe 
+                      width="100%" 
+                      height="200" 
+                      frameborder="0" 
+                      scrolling="no" 
+                      marginheight="0" 
+                      marginwidth="0" 
+                      src="https://maps.google.com/maps?q=Thessaloniki+Concert+Hall&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                      style="border-radius: 6px; margin-bottom: 15px;">
+                    </iframe>
 
-            <h3 style="margin-top: 60px; font-size: 1.2rem; border-bottom: none;">Day 2 — May 25</h3>
-            <table>
-                <tr>
-                    <td>09:00 – 10:30</td>
-                    <td>
-                        <span class="session-title">Session IV</span>
-                        <span class="session-desc">Keynote & Selected Talks</span>
-                    </td>
-                </tr>
-                <tr class="schedule-break">
-                    <td>10:30 – 11:00</td>
-                    <td>Coffee Break</td>
-                </tr>
-                <tr>
-                    <td>11:00 – 12:30</td>
-                    <td>
-                        <span class="session-title">Session V</span>
-                        <span class="session-desc">Selected Proceedings Talks</span>
-                    </td>
-                </tr>
-                <tr class="schedule-break">
-                    <td>12:30 – 13:00</td>
-                    <td>Closing Remarks & Awards</td>
-                </tr>
-            </table>
+
+                    </div>
+                    
+                    <h4 style="margin-top:0;">Thessaloniki Concert Hall</h4>
+                    <p style="margin-bottom: 10px; color: var(--text-main);">
+                        25 Martiou Street & Paralia<br>
+                        546 46 Thessaloniki, Greece
+                    </p>
+                    <a href="https://maps.google.com/?q=Thessaloniki+Concert+Hall" target="_blank" class="link-highlight">View on Map →</a>
+                </div>
+            </div>
         </section>
 
-        <section id="organization">
-            <h2>Organization</h2>
-            
-            <div class="leadership-grid">
-                
-                <div class="role-group">
-                    <h3>Co-Chairs</h3>
-                    <ul class="person-list">
-                        <li class="person-item">
-                            <span class="person-name">Ferhat Ay</span>
-                            <span class="person-affil">La Jolla Institute for Immunology<br>UCSD</span>
-                        </li>
-                        <li class="person-item">
-                            <span class="person-name">Aly Azeem Khan</span>
-                            <span class="person-affil">University of Chicago<br>Biohub Chicago</span>
-                        </li>
-                    </ul>
-                </div>
+        <section id="team" class="section-spacer">
+            <div class="card">
+                <h2>Committees</h2>
+                <div class="org-grid">
+                    
+                    <div class="org-group">
+                        <span class="role-title">Meeting Co-Chairs</span>
+                        <div class="person">
+                            <a href="https://www.lji.org/labs/ay/" class="person-link">
+                                <span class="person-name">Ferhat Ay</span>
+                                <span class="person-affil">La Jolla Institute for Immunology</span>
+                            </a>
+                        </div>
+                        <div class="person">
+                            <a href="https://ttic.uchicago.edu/~aakhan/" class="person-link">
+                                <span class="person-name">Aly Azeem Khan</span>
+                                <span class="person-affil">University of Chicago</span>
+                                <span class="person-affil">Biohub Chicago</span>
+                            </a>
+                        </div>
+                    </div>
 
-                <div class="role-group">
-                    <h3>Steering Committee</h3>
-                    <ul class="person-list">
-                        <li class="person-item">
-                            <span class="person-name">Jason Ernst</span>
-                            <span class="person-affil">University of California, Los Angeles</span>
-                        </li>
-                        <li class="person-item">
-                            <span class="person-name">Sushmita Roy</span>
-                            <span class="person-affil">University of Wisconsin-Madison</span>
-                        </li>
-                        <li class="person-item">
-                            <span class="person-name">Saurabh Sinha</span>
-                            <span class="person-affil">Georgia Institute of Technology</span>
-                        </li>
-                    </ul>
-                </div>
+                    <div class="org-group">
+                        <span class="role-title">Steering Committee</span>
+                        <div class="person">
+                            <a href="#" class="person-link">
+                                <span class="person-name">Jason Ernst</span>
+                                <span class="person-affil">UCLA</span>
+                            </a>
+                        </div>
+                        <div class="person">
+                            <a href="#" class="person-link">
+                                <span class="person-name">Sushmita Roy</span>
+                                <span class="person-affil">UW-Madison</span>
+                            </a>
+                        </div>
+                        <div class="person">
+                            <a href="#" class="person-link">
+                                <span class="person-name">Saurabh Sinha</span>
+                                <span class="person-affil">Georgia Tech</span>
+                            </a>
+                        </div>
+                    </div>
+                     <br> 
+                    <div class="org-group">
+                        <span class="role-title">Program Committee</span>
+                        <div class="person">
+                            <span class="person-name" style="font-style: italic; color: var(--text-muted); font-weight: normal;">To Be Announced</span>
+                        </div>
+                    </div>
 
-                <div class="role-group">
-                    <h3>Program Chairs</h3>
-                    <ul class="person-list">
-                        <li class="person-item">
-                            <span class="person-name">TBD</span>
-                            <span class="person-affil">University Name</span>
-                        </li>
-                        <li class="person-item">
-                            <span class="person-name">TBD</span>
-                            <span class="person-affil">Institute Name</span>
-                        </li>
-                    </ul>
                 </div>
-
             </div>
         </section>
 
     </div>
 
     <footer>
-        &copy; 2026 RECOMB-RSG. All rights reserved.
+        <div class="container">
+            © 2026 RECOMB-RSG Organization. All rights reserved.
+        </div>
     </footer>
 
 </body>
