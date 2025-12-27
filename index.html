@@ -1,14 +1,301 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOMB-RSG 2026 | RECOMB Regulatory Genomics Satellite</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; }
-        h1 { color: #2c3e50; }
+        /* --- Timeless Minimalist Variables --- */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;      /* Almost black */
+            --text-secondary: #555555; /* Medium grey */
+            --accent: #000000;         /* Stark black for emphasis */
+            --border: #e0e0e0;
+            --container-width: 840px;  /* Narrower for reading comfort */
+        }
+
+        /* --- Global Typography --- */
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Modern Clean Body */
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Timeless Serif for Headings */
+        h1, h2, h3 {
+            font-family: Georgia, "Times New Roman", Times, serif;
+            font-weight: normal;
+            color: var(--text-main);
+            margin-top: 0;
+        }
+
+        /* --- Layout --- */
+        .wrapper {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            padding: 50px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--text-main); /* Strong line */
+            margin-bottom: 80px;
+        }
+
+        .nav-logo {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-items a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .nav-items a:hover { color: var(--text-main); }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-bottom: 120px;
+        }
+
+        h1 {
+            font-size: 4.2rem; /* Large, editorial scale */
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero-meta {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            display: flex;
+            gap: 40px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .hero-meta div strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        /* --- Content Sections --- */
+        section { margin-bottom: 120px; }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            max-width: 650px; /* Optimal reading width */
+        }
+
+        /* --- Tracks Grid --- */
+        .tracks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .track-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-style: italic; /* Classy touch */
+        }
+        
+        .track-item ul {
+            padding-left: 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Button --- */
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: var(--text-main);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 0; /* Sharp corners for modern feel */
+            transition: background 0.3s;
+        }
+        .button:hover { background: #333; }
+
+        /* --- Minimal Table --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+        td {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        td:first-child { color: var(--text-main); width: 40%; font-weight: 500; }
+        td:last-child { color: var(--text-secondary); text-align: right; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 80px 0;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            h1 { font-size: 2.8rem; }
+            .hero-meta { flex-direction: column; gap: 20px; }
+            nav { flex-direction: column; gap: 20px; }
+            .nav-items a { margin: 0 15px; }
+            .wrapper { padding: 0 25px; }
+        }
     </style>
 </head>
 <body>
-    <h1>RECOMB RSG</h1>
-    <p>RECOMB RSG initial set up.</p>
+
+    <div class="wrapper">
+        
+        <nav>
+            <div class="nav-logo">RECOMB-RSG 2026</div>
+            <div class="nav-items">
+                <a href="#about">About</a>
+                <a href="#call">Submissions</a>
+                <a href="#dates">Schedule</a>
+            </div>
+        </nav>
+
+        <header class="hero">
+            <h1>Regulatory &<br>Systems Genomics</h1>
+            
+            <div class="hero-meta">
+                <div>
+                    <strong>Location</strong>
+                    Thessaloniki, Greece
+                </div>
+                <div>
+                    <strong>Date</strong>
+                    May 24–25, 2026
+                </div>
+                <div>
+                    <strong>Context</strong>
+                    Satellite Meeting of RECOMB 2026
+                </div>
+            </div>
+        </header>
+
+        <section id="about">
+            <h2>The Meeting</h2>
+            <p>
+                RECOMB-RSG 2026 is a key forum for advances in regulatory genomics and systems biology.
+            </p>
+            <p>
+                As a satellite meeting of RECOMB, we bring together a focused community of researchers to explore the algorithms, mathematical models, and machine learning techniques decoding the regulatory logic of the genome.
+            </p>
+        </section>
+
+        <section id="call">
+            <h2>Call for Contributions</h2>
+            <p>We invite submissions for oral presentations and posters in the following tracks.</p>
+
+            <div class="tracks">
+                <div class="track-item">
+                    <h3>Proceedings Track</h3>
+                    <p>For original, unpublished research offering significant contributions to the field.</p>
+                        <li>2 page abstract</li>
+                        <li>Presentation of pre-print manuscripts</li>
+                </div>
+                
+                <div class="track-item">
+                    <h3>Highlights Track</h3>
+                    <p>For high-impact work already published in top-tier journals (Jan 2025 – Present).</p>
+                    <ul>
+                        <li>2 page abstract</li>
+                        <li>Presentation of recent breakthrough findings</li>
+                    </ul>
+                </div>
+
+                <div class="track-item">
+                    <h3>Poster Track</h3>
+                    <p>For late-breaking results, ongoing research, and preliminary findings.</p>
+                    <ul>
+                        <li>1 page abstract</li>
+                        <li>Dedicated poster session</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="#" class="button">Submit Abstract</a>
+        </section>
+
+        <section id="dates">
+            <h2>Timeline</h2>
+            <table>
+                <tr>
+                    <td>Paper Submission</td>
+                    <td>January 30, 2026</td>
+                </tr>
+                <tr>
+                    <td>Highlights Submission</td>
+                    <td>February 15, 2026</td>
+                </tr>
+                <tr>
+                    <td>Author Notification</td>
+                    <td>March 15, 2026</td>
+                </tr>
+                <tr>
+                    <td>Conference Dates</td>
+                    <td>May 24–25, 2026</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Organization</h2>
+            <p><strong>Program Chairs</strong></p>
+            <p style="margin-top: -15px;">
+                TBD, University Name<br>
+                TBD, Institute Name
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        &copy; 2026 RECOMB-RSG Organization. All rights reserved.
+    </footer>
+
 </body>
 </html>
