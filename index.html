@@ -266,6 +266,60 @@
         .break { background-color: #fafafa; margin: 0 -40px; padding: 8px 40px; }
         .break .s-time { color: #999; }
 
+        /* Color coding for talk types */
+        .talk-20 {
+            background-color: #eff6ff;
+            margin: 0 -40px;
+            padding: 12px 40px;
+            border-left: 3px solid #0044cc;
+        }
+        .lightning-10 {
+            background-color: #fff7ed;
+            margin: 0 -40px;
+            padding: 12px 40px;
+            border-left: 3px solid #ea580c;
+        }
+        .keynote-session {
+            background-color: #f5f3ff;
+            margin: 0 -40px;
+            padding: 14px 40px;
+            border-left: 3px solid #7c3aed;
+        }
+        .welcome-session, .closing-session {
+            background-color: #f9fafb;
+            margin: 0 -40px;
+            padding: 10px 40px;
+            border-left: 3px solid #9ca3af;
+        }
+
+        .schedule-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .schedule-legend .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .schedule-legend .swatch {
+            width: 14px;
+            height: 14px;
+            border-radius: 3px;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .talk-20, .lightning-10, .keynote-session, .welcome-session, .closing-session {
+                margin: 0 -25px;
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+        }
+
         /* --- ORGANIZATION --- */
         .org-grid {
             display: grid;
@@ -319,8 +373,6 @@
             <div class="logo">RECOMB-RSG 2026</div>
             <div class="nav-links">
                 <a href="#about">About</a>
-                <a href="#dates">Timeline</a>
-                <a href="#submissions">Submissions</a>
                 <a href="#schedule">Schedule</a>
                 <a href="#venue">Venue</a>
                 <a href="#team">Committees</a>
@@ -357,7 +409,7 @@
                 </div>
             </div>
 
-            <a href="https://easychair.org/my2/conference?conf=recomb2026" class="btn-primary">Submit via EasyChair</a>
+            <!-- <a href="https://easychair.org/my2/conference?conf=recomb2026" class="btn-primary">Submit via EasyChair</a> -->
         </section>
 
         <section id="about" class="section-spacer">
@@ -393,6 +445,7 @@
             </div>
         </section>
 
+<!--
         <section id="dates" class="section-spacer">
             <div class="card">
                 <h2>Timeline</h2>
@@ -413,7 +466,10 @@
                 <p style="margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);">* All deadlines are 23:59 AoE (Anywhere on Earth).</p>
             </div>
         </section>
+-->
 
+
+<!--
         <section id="submissions" class="section-spacer">
             <div class="card">
                 <h2>Call for Talks</h2>
@@ -461,68 +517,193 @@
                 </div>
             </div>
         </section>
+-->
 
         <section id="schedule" class="section-spacer">
             <div class="card">
                 <div style="margin-bottom: 30px;">
-                    <h2>Tentative Schedule</h2>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Detailed program will be announced after notifications.</p>
+                    <h2>Program</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Monday, May 25, 2026. Schedule is subject to minor changes.</p>
                 </div>
-<!--
+                <div class="schedule-legend">
+                    <div class="legend-item"><span class="swatch" style="background:#f5f3ff;border:1px solid #7c3aed;"></span>Keynote</div>
+                    <div class="legend-item"><span class="swatch" style="background:#eff6ff;border:1px solid #0044cc;"></span>Talk (20 min)</div>
+                    <div class="legend-item"><span class="swatch" style="background:#fff7ed;border:1px solid #ea580c;"></span>Lightning (10 min)</div>
+                    <div class="legend-item"><span class="swatch" style="background:#fafafa;border:1px solid #d1d5db;"></span>Break</div>
+                </div>
+
                 <div class="day-block">
                     <div class="day-header">Monday, May 25</div>
-                    <div class="session">
-                        <div class="s-time">08:30 – 09:00</div>
-                        <div class="s-info"><span class="s-title">Registration & Welcome</span></div>
-                    </div>
-                    <div class="session">
-                        <div class="s-time">09:00 – 10:30</div>
+
+                    <div class="session welcome-session">
+                        <div class="s-time">09:25 – 09:30</div>
                         <div class="s-info">
-                            <span class="s-title">Session I</span>
-                            <span class="s-desc">Keynote & Selected Talks</span>
+                            <span class="s-title">Welcome</span>
+                            <span class="s-desc">Welcome speech</span>
                         </div>
                     </div>
+
+                    <div class="session keynote-session">
+                        <div class="s-time">09:30 – 10:20</div>
+                        <div class="s-info">
+                            <span class="s-title">Keynote — Ben Raphael, PhD (Princeton University)</span>
+                            <span class="s-desc">40 min + 10 min Q&A</span>
+                        </div>
+                    </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">10:20 – 10:40</div>
+                        <div class="s-info">
+                            <span class="s-title">Chuhanwen Sun and Yi Zhang</span>
+                            <span class="s-desc">STHD: probabilistic cell typing of single Spots in whole Transcriptome spatial data with High Definition</span>
+                        </div>
+                    </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">10:40 – 11:00</div>
+                        <div class="s-info">
+                            <span class="s-title">Haoyu Wang, Brittany Cody, Manuel Saavedra, Lanuza Faccioli, Rodrigo Florentino, Alejandro Soto-Gutierrez and Hatice Ulku Osmanbeyoglu</span>
+                            <span class="s-desc">DGAT: A Dual-Graph Attention Network for Inferring Spatial Protein Landscapes from Transcriptomics</span>
+                        </div>
+                    </div>
+
                     <div class="session break">
-                        <div class="s-time">10:30 – 11:00</div>
-                        <div class="s-info"><span class="s-title">Coffee Break</span></div>
+                        <div class="s-time">11:00 – 11:40</div>
+                        <div class="s-info"><span class="s-title">Midmorning coffee break</span></div>
                     </div>
-                    <div class="session">
-                        <div class="s-time">11:00 – 12:30</div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">11:40 – 12:00</div>
                         <div class="s-info">
-                            <span class="s-title">Session II</span>
-                            <span class="s-desc">Selected Proceedings Talks</span>
+                            <span class="s-title">Seokmin Ha and Bonnie Berger</span>
+                            <span class="s-desc">Inferring Direct Causal Regulation in Branching Lineages via Geometric Deconfounding</span>
                         </div>
                     </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">12:00 – 12:20</div>
+                        <div class="s-info">
+                            <span class="s-title">Elizabeth Gilfeather, Maria Chikina and Dennis Kostka</span>
+                            <span class="s-desc">When Less Is Enough: Low-Rank Structure in DNA Sequence-to-Function Models</span>
+                        </div>
+                    </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">12:20 – 12:40</div>
+                        <div class="s-info">
+                            <span class="s-title">Jieni Hu, Julianne Fetter, David Ryan Koes and Maria Chikina</span>
+                            <span class="s-desc">InfluenceNet: Encoding Motif Influence for Interpretable Modeling of Cis-Regulatory Syntax</span>
+                        </div>
+                    </div>
+
+                    <div class="session lightning-10">
+                        <div class="s-time">12:40 – 12:50</div>
+                        <div class="s-info">
+                            <span class="s-title">Noam Shimshoviz, Safwan Butto and Yaron Orenstein</span>
+                            <span class="s-desc">NPBIP: Predicting Binding Preferences of Uncharacterized Nucleic-Acid-Binding Proteins</span>
+                        </div>
+                    </div>
+
+                    <div class="session lightning-10">
+                        <div class="s-time">12:50 – 13:00</div>
+                        <div class="s-info">
+                            <span class="s-title">Fabian Woller, Paul Martini, Souptik Sen, David B. Blumenthal and Anne Hartebrodt</span>
+                            <span class="s-desc">SignifiKANTE: Efficient P-value computation for gene regulatory networks</span>
+                        </div>
+                    </div>
+
                     <div class="session break">
-                        <div class="s-time">12:30 – 13:30</div>
-                        <div class="s-info"><span class="s-title">Lunch Break</span></div>
+                        <div class="s-time">13:00 – 14:30</div>
+                        <div class="s-info"><span class="s-title">Lunch break</span></div>
                     </div>
-                    <div class="session">
-                        <div class="s-time">13:30 – 15:00</div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">14:30 – 14:50</div>
                         <div class="s-info">
-                            <span class="s-title">Session III</span>
-                            <span class="s-desc">Selected Highlights Talks</span>
+                            <span class="s-title">Abrar Rahman Abir, Sajib Acharjee Dip and Liqing Zhang</span>
+                            <span class="s-desc">CFM-GP: Unified Conditional Flow Matching to Learn Gene Perturbation Across Cell Types</span>
                         </div>
                     </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">14:50 – 15:10</div>
+                        <div class="s-info">
+                            <span class="s-title">Hechen Li and Xiuwei Zhang</span>
+                            <span class="s-desc">scModCompare: Disentangling Shared Identity and Modality-Specific Regulatory Programs in Multimodal Single-Cell Data</span>
+                        </div>
+                    </div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">15:10 – 15:30</div>
+                        <div class="s-info">
+                            <span class="s-title">Hui Cheng, Yunhao Qiao, Yufan Feng, Yuyang Wei, Jinpu Cai, Xinzhu Jiang, Qiuyu Lian and Hongyi Xin</span>
+                            <span class="s-desc">VeloTrace Reconciles Divergent Velocity and Trajectory in Single-cell Transcriptomics with Deep Neural ODE</span>
+                        </div>
+                    </div>
+
+                    <div class="session lightning-10">
+                        <div class="s-time">15:30 – 15:40</div>
+                        <div class="s-info">
+                            <span class="s-title">Anna Möller, Miriam Schnitzerlein, Eric Greto, Vasily Zaburdaev, Stefan Uderhardt and David B. Blumenthal</span>
+                            <span class="s-desc">Quantifying distribution shifts in single-cell data with scXMatch</span>
+                        </div>
+                    </div>
+
+                    <div class="session lightning-10">
+                        <div class="s-time">15:40 – 15:50</div>
+                        <div class="s-info">
+                            <span class="s-title">Kristina Sungeun Song, Marianne Cyr, Laurence Faucher-Giguère, Bernice Yeo Hwee Ting, Vivian Kaiyan Seow, Gabrielle Deschamps-Francoeur, Sherif Abou Elela and Michelle S. Scott</span>
+                            <span class="s-desc">snoFlake: A network model for discovering novel snoRNA-RBP regulatory complexes in human post-transcriptional regulation</span>
+                        </div>
+                    </div>
+
+                    <div class="session lightning-10">
+                        <div class="s-time">15:50 – 16:00</div>
+                        <div class="s-info">
+                            <span class="s-title">Sobhan Shukueian Tabrizi, Helyasadat Hashemi Aghdam and A. Ercument Cicek</span>
+                            <span class="s-desc">RNA–X: Modeling RNA interactions to design binder RNA and simultaneously target multiple molecules of different types</span>
+                        </div>
+                    </div>
+
                     <div class="session break">
-                        <div class="s-time">15:00 – 15:30</div>
-                        <div class="s-info"><span class="s-title">Afternoon Coffee</span></div>
+                        <div class="s-time">16:00 – 16:40</div>
+                        <div class="s-info"><span class="s-title">Afternoon coffee break</span></div>
                     </div>
-                    <div class="session">
-                        <div class="s-time">15:30 – 17:00</div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">16:40 – 17:00</div>
                         <div class="s-info">
-                            <span class="s-title">Session IV</span>
-                            <span class="s-desc">Lightning Talks & Late Breaking</span>
+                            <span class="s-title">Ruyi Chen, Nathan Palpant, Gabriel Foley and Mikael Boden</span>
+                            <span class="s-desc">Coupling codon and protein constraints decouples drivers of variant pathogenicity</span>
                         </div>
                     </div>
-                    <div class="session">
-                        <div class="s-time">17:00 – 17:30</div>
-                        <div class="s-info"><span class="s-title">Closing Remarks</span></div>
+
+                    <div class="session talk-20">
+                        <div class="s-time">17:00 – 17:20</div>
+                        <div class="s-info">
+                            <span class="s-title">Pia Keukeleire, Coline Arnould, Martin Kircher and Nadav Ahituv</span>
+                            <span class="s-desc">Simultaneously characterizing promoter interactions and regulatory activity using Capture-C MPRA</span>
+                        </div>
+                    </div>
+
+                    <div class="session closing-session">
+                        <div class="s-time">17:20 – 17:25</div>
+                        <div class="s-info">
+                            <span class="s-title">Closing remarks</span>
+                        </div>
+                    </div>
+
+                    <div class="session break">
+                        <div class="s-time">17:30 – 19:00</div>
+                        <div class="s-info"><span class="s-title">Poster session</span></div>
+                    </div>
+
+                    <div class="session break">
+                        <div class="s-time">20:00</div>
+                        <div class="s-info"><span class="s-title">Dinner</span></div>
                     </div>
                 </div>
             </div>
-
--->
         </section>
 
         <section id="venue" class="section-spacer">
